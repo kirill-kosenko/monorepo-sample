@@ -34,9 +34,9 @@ node {
 
 @NonCPS
 def createFilePath(def path) {
-    println "===> path: ${path}";
-    println env['NODE_NAME'];
     if (env['NODE_NAME'].equals("master") || env['NODE_NAME'].equals("buil-in")) {
+        println "===> path: ${path}";
+        println env['NODE_NAME'];
         File localPath = new File(path)
         return new hudson.FilePath(localPath);
     } else {
