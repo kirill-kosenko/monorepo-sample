@@ -34,6 +34,7 @@ node {
 
 @NonCPS
 def createFilePath(def path) {
+    println "===> path: ${path}";
     if (env['NODE_NAME'].equals("master")) {
         File localPath = new File(path)
         return new hudson.FilePath(localPath);
