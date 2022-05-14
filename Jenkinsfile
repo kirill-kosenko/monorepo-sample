@@ -34,7 +34,7 @@ node {
 
 @NonCPS
 def createFilePath(def path) {
-    if (env['NODE_NAME'].equals("master") || env['NODE_NAME'].equals("buil-in")) {
+    if (env['NODE_NAME'].equals("master") || env['NODE_NAME'].equals("built-in")) {
         println "===> path: ${path}";
         println env['NODE_NAME'];
         File localPath = new File(path)
