@@ -36,13 +36,10 @@ node {
 def createFilePath(def path) {
     println "===> path: ${path}";
     println env['NODE_NAME'];
-    if (env['NODE_NAME'].equals("master")) {
+    if (env['NODE_NAME'].equals("master") || env['NODE_NAME'].equals("buil-in") {
         File localPath = new File(path)
         return new hudson.FilePath(localPath);
     } else {
-        println "Let's sum!"
-   //     println "instance: ${Jenkins.getInsatnce()}";
-        println Jenkins.getInsatnce().getComputer(env['NODE_NAME']);
         return new hudson.FilePath(Jenkins.getInstance().getComputer(env['NODE_NAME']).getChannel(), path);
     }
 }
