@@ -39,8 +39,8 @@ def createFilePath(def path) {
         return new hudson.FilePath(localPath);
     } else {
         println "Let's sum!"
-        Jenkins.getInsatnce();
-        Jenkins.getInsatnce().getComputer(env['NODE_NAME']);
+        println Jenkins.getInsatnce();
+        println Jenkins.getInsatnce().getComputer(env['NODE_NAME']);
         return new hudson.FilePath(Jenkins.getInstance().getComputer(env['NODE_NAME']).getChannel(), path);
     }
 }
