@@ -40,10 +40,10 @@ pipeline {
 //                 changeset "**/apps/app1/*.*"
 //                 beforeAgent true
 //             }
-            githubNotify status: 'PENDING', description: "BUILD $BUILD_ID has started", context: 'jenkins/build/app1',
-                                          targetUrl: "$BUILD_URL", credentialsId: 'monorepo-dsl',
-                                          account: 'kirill-kosenko', repo: 'monorepo-sample', sha: "${env.GIT_COMMIT}"
             steps {
+                githubNotify status: 'PENDING', description: "BUILD $BUILD_ID has started", context: 'jenkins/build/app1',
+                                              targetUrl: "$BUILD_URL", credentialsId: 'monorepo-dsl',
+                                              account: 'kirill-kosenko', repo: 'monorepo-sample', sha: "${env.GIT_COMMIT}"
 //                 agent any
 
 //                 script {
