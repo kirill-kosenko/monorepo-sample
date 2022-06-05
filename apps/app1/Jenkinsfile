@@ -51,6 +51,20 @@ pipeline {
 //                 }
                 sh "mvn -f apps/app1/pom.xml clean install"
             }
+
+            post {
+                success {
+                    githubNotify status: 'SUCCESS', description: "BUILD $BUILD_ID has started", context: 'jenkins/build/app1',
+                                 targetUrl: "$BUILD_URL", credentialsId: 'monorepo-dsl',
+                                 account: 'kirill-kosenko', repo: 'monorepo-sample', sha: "${env.GIT_COMMIT}"
+                }
+
+                unsuccessful {
+                    githubNotify status: 'ERROR', description: "BUILD $BUILD_ID has started", context: 'jenkins/build/app1',
+                                 targetUrl: "$BUILD_URL", credentialsId: 'monorepo-dsl',
+                                 account: 'kirill-kosenko', repo: 'monorepo-sample', sha: "${env.GIT_COMMIT}"
+                }
+            }
         }
 
     }
